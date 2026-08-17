@@ -1,0 +1,15 @@
+{
+  "name": "leadr",
+  "owner": { "name": "leadR", "url": "https://leadrmarketing.co.uk" },
+  "metadata": {
+    "description": "leadR's content system for members of the leadR community.",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "leadr",
+      "source": "leadr",
+      "description": "Script, record, edit, post and repurpose a week of content from one video."
+    }
+  ]
+}

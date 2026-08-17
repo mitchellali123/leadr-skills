@@ -1,0 +1,9 @@
+{
+  "name": "leadr",
+  "description": "The leadR content system: script, record, edit, post and repurpose a full week of content from one video. Your brand and history live with leadR, so every session picks up where the last one stopped.",
+  "version": "0.1.0",
+  "author": { "name": "leadR", "url": "https://leadrmarketing.co.uk" },
+  "homepage": "https://leadrmarketing.co.uk",
+  "repository": "https://github.com/mitchellali123/leadr-skills",
+  "license": "UNLICENSED"
+}

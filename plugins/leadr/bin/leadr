@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Thin wrapper so `leadr <command>` works from anywhere while the plugin is enabled.
+# Claude Code puts a plugin's bin/ on the Bash tool's PATH, so no path juggling is needed.
+set -euo pipefail
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec python3 "$DIR/../scripts/leadr_api.py" "$@"

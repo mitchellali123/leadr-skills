@@ -1,5 +1,5 @@
 {
   "supabase_url": "https://ytmlxioelgoowvukmrpn.supabase.co",
-  "supabase_anon_key": "PASTE_ANON_KEY_FROM_SUPABASE_DASHBOARD_SETTINGS_API",
-  "_note": "The anon key is PUBLIC by design. It identifies the project and grants nothing on its own: every table is behind row level security and the anon role can read nothing at all (see leadr migration 0020). Members' data is protected by their own login, not by this key being secret."
+  "supabase_anon_key": "sb_publishable_XR-eK08zEcmCWS90kYNzJA_mMsPmjwo",
+  "_note": "This publishable key is PUBLIC by design. It names the project and grants nothing: the anon role it resolves to has been revoked from every table (leadr migration 0020), verified live. Members' data is protected by their own login and row level security, never by this key being secret. The SECRET key must never appear here."
 }

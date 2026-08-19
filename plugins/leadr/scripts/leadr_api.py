@@ -177,8 +177,9 @@ def cmd_verify(email, code):
     if not tok.get("access_token"):
         die("that code did not work. Codes expire quickly, so request a fresh one with signin.")
     _save_session(tok)
-    rows = _rest("GET", "members?select=id,email")
-    out({"ok": True, "signed_in": True, "member": rows[0] if rows else None})
+    rows = _rest("GET", "members?select=id,email,status")
+    out({"ok": True, "signed_in": True, "member": rows[0] if rows else None,
+         "pending": bool(rows) and rows[0].get("status") != "active"})
 
 
 def cmd_signout():
@@ -190,10 +191,17 @@ def cmd_signout():
 def cmd_me():
     """Everything /leadr needs to open a session: who they are, what we know, where they got to,
     and the menu. One call, so the router is not chatty."""
-    members = _rest("GET", "members?select=id,email,created_at")
+    members = _rest("GET", "members?select=id,email,status,created_at")
     if not members:
         die("no member record for this session. Tell leadR.")
     m = members[0]
+    if m.get("status") != "active":
+        # signed in with a verified mailbox, but not on the Skool roster (or suspended): say so plainly, no data
+        out({"ok": False, "signed_in": True, "member": m, "pending": True,
+             "message": ("This email is verified but is not on the leadR Skool member list yet, so there is nothing to "
+                         "load. If you have just joined the Skool, leadR adds you within a day; make sure you joined with "
+                         "this same email. If you have not joined: https://leadrmarketing.co.uk")})
+        return
     context = _rest("GET", "member_context_current?select=dimension,topic,value,created_at")
     progress = _rest("GET", "member_progress?select=current_stage,current_work,updated_at")
     stages = _rest("GET", "stages?select=key,label,section,sort&order=sort")

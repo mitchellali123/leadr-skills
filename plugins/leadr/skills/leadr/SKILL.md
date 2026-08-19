@@ -58,6 +58,10 @@ leadr me
 This returns, in one call: who they are, everything we know about them (`context`), where they got
 to last time (`progress`), their recent work, and the stage menu (`stages`).
 
+**If the reply has `pending: true`**, they are signed in but not on the Skool member list (or suspended).
+Tell them exactly what the `message` says, nothing more, and stop: no stages, no context, no guessing
+about their account. They can come back once leadR has added them.
+
 **If `onboarded` is false**, they are brand new. Run the onboarding stage from the menu before
 anything else, and do not skip it: every other stage reads what it captures.
 
